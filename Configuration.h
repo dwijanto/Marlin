@@ -187,6 +187,7 @@
 // shouldn't use bed PID until someone else verifies your hardware works.
 // If this is enabled, find your own PID constants below.
 //#define PIDTEMPBED
+#define PIDTEMPBED //dwi
 //
 //#define BED_LIMIT_SWITCHING
 
@@ -199,9 +200,9 @@
 #ifdef PIDTEMPBED
 //120v 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
 //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-    #define  DEFAULT_bedKp 10.00
-    #define  DEFAULT_bedKi .023
-    #define  DEFAULT_bedKd 305.4
+    #define  DEFAULT_bedKp 417.38 //10.00
+    #define  DEFAULT_bedKi 55.38  //.023
+    #define  DEFAULT_bedKd 786.45 //305.4
 
 //120v 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
 //from pidautotune
@@ -409,9 +410,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
   #define Z_RAISE_BEFORE_HOMING 4       // (in mm) Raise Z before homing (G28) for Probe Clearance.
                                         // Be sure you have this distance over your Z_MAX_POS in case
-
   #define XY_TRAVEL_SPEED 8000         // X and Y axis travel speed between probes, in mm/min
-
+  
   #define Z_RAISE_BEFORE_PROBING 15    //How much the extruder will be raised before traveling to the first probing point.
   #define Z_RAISE_BETWEEN_PROBINGS 5  //How much the extruder will be raised when traveling from between next probing points
 
@@ -481,7 +481,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
 //// MOVEMENT SETTINGS
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
-#define HOMING_FEEDRATE {50*60, 50*60, 4*60, 0}  // set the homing speeds (mm/min)
+//#define HOMING_FEEDRATE {50*60, 50*60, 4*60, 0}  // set the homing speeds (mm/min)
+#define HOMING_FEEDRATE {50*60, 50*60, 2*60, 0}  // set the homing speeds (mm/min)
 
 // default settings
 // DWI
@@ -508,11 +509,12 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 //  M8 = 1.25,
 //  SAE516INCH = (25.4/18)
 //
-
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   {X,Y,Z,E}  // default steps
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {78.7402,78.7402,200.0*8/3,760*1.1}  // default steps per unit for Ultimaker
 //#define DEFAULT_AXIS_STEPS_PER_UNIT    {400,400,16000,2731.171}  // default steps per unit for DRV8825 16Tooth 32 steps 0.9 degree
 //#define DEFAULT_AXIS_STEPS_PER_UNIT    {400,400,16000,2502.827}  // default steps per unit for DRV8825 16Tooth 32 steps 0.9 degree
 #define DEFAULT_AXIS_STEPS_PER_UNIT    {400,400,16000,2564}  //  disctance actually moved default steps per unit for DRV8825 16Tooth 32 steps 0.9 degree
+//#define DEFAULT_AXIS_STEPS_PER_UNIT    {400,400,4000,2564}  //  disctance actually moved default steps per unit for DRV8825 16Tooth 8 steps 0.9 degree
 //#define DEFAULT_AXIS_STEPS_PER_UNIT    {400,400,16000,3368}
 #define DEFAULT_MAX_FEEDRATE          {500, 500, 5, 25}    // (mm/sec)
 //#define DEFAULT_MAX_ACCELERATION      {9000,9000,100,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
