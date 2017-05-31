@@ -323,8 +323,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
 #define INVERT_X_DIR true    // for Mendel set to false, for Orca set to true
 //Dwi
-#define INVERT_Y_DIR true  //false    // for Mendel set to true, for Orca set to false
-//#define INVERT_Y_DIR false  //false    // for Mendel set to true, for Orca set to false
+//#define INVERT_Y_DIR true  //false    // for Mendel set to true, for Orca set to false
+#define INVERT_Y_DIR false  //false    // for Mendel set to true, for Orca set to false
 #define INVERT_Z_DIR false //true     // for Mendel set to false, for Orca set to true
 //DWI
 #define INVERT_E0_DIR true //false   // for direct drive extruder v9 set to true, for geared extruder set to false
@@ -334,16 +334,19 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // ENDSTOP SETTINGS:
 // Sets direction of endstops when homing; 1=MAX, -1=MIN
 #define X_HOME_DIR 1 //-1
-#define Y_HOME_DIR -1
+//#define Y_HOME_DIR -1
+#define Y_HOME_DIR 1
 #define Z_HOME_DIR -1
 
 #define min_software_endstops true // If true, axis won't move to coordinates less than HOME_POS.
 #define max_software_endstops true  // If true, axis won't move to coordinates greater than the defined lengths below.
 
 // Travel limits after homing
-#define X_MAX_POS 205
+//#define X_MAX_POS 205
+#define X_MAX_POS 200
 #define X_MIN_POS 0
-#define Y_MAX_POS 205
+//#define Y_MAX_POS 205
+#define Y_MAX_POS 200
 #define Y_MIN_POS 0
 #define Z_MAX_POS 200
 #define Z_MIN_POS 0
@@ -513,15 +516,21 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {78.7402,78.7402,200.0*8/3,760*1.1}  // default steps per unit for Ultimaker
 //#define DEFAULT_AXIS_STEPS_PER_UNIT    {400,400,16000,2731.171}  // default steps per unit for DRV8825 16Tooth 32 steps 0.9 degree
 //#define DEFAULT_AXIS_STEPS_PER_UNIT    {400,400,16000,2502.827}  // default steps per unit for DRV8825 16Tooth 32 steps 0.9 degree
-#define DEFAULT_AXIS_STEPS_PER_UNIT    {400,400,16000,2564}  //  disctance actually moved default steps per unit for DRV8825 16Tooth 32 steps 0.9 degree
-//#define DEFAULT_AXIS_STEPS_PER_UNIT    {400,400,4000,2564}  //  disctance actually moved default steps per unit for DRV8825 16Tooth 8 steps 0.9 degree
+//Dwi
+//#define DEFAULT_AXIS_STEPS_PER_UNIT    {400,400,16000,1300}  //  disctance actually moved default steps per unit for DRV8825 16Tooth 16 steps 1.8 degree
+#define DEFAULT_AXIS_STEPS_PER_UNIT    {400,400,16000,1368.122}  //  disctance actually moved default steps per unit for DRV8825 16Tooth 16 steps 1.8 degree
+//#define DEFAULT_AXIS_STEPS_PER_UNIT    {400,400,16000,1282}  //  disctance actually moved default steps per unit for DRV8825 16Tooth 16 steps 1.8 degree
+//#define DEFAULT_AXIS_STEPS_PER_UNIT    {400,400,4000,2564}  //  disctance actually moved default steps per unit for DRV8825 16Tooth 32 steps 0.9 degree
 //#define DEFAULT_AXIS_STEPS_PER_UNIT    {400,400,16000,3368}
-#define DEFAULT_MAX_FEEDRATE          {500, 500, 5, 25}    // (mm/sec)
+//#define DEFAULT_MAX_FEEDRATE          {500, 500, 5, 25}    // (mm/sec)
+#define DEFAULT_MAX_FEEDRATE          {500, 500, 2, 45}    // (mm/sec)
 //#define DEFAULT_MAX_ACCELERATION      {9000,9000,100,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
 #define DEFAULT_MAX_ACCELERATION      {180,180,10,200}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
 //Dwi
 #define DEFAULT_ACCELERATION          60 //3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  60 //3000   // X, Y, Z and E max acceleration in mm/s^2 for retracts
+//define DEFAULT_ACCELERATION          1000 //3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves
+//define DEFAULT_RETRACT_ACCELERATION  1000 //3000   // X, Y, Z and E max acceleration in mm/s^2 for retracts
 
 // Offset of the extruders (uncomment if using more than one and relying on firmware to position when changing).
 // The offset has to be X=0, Y=0 for the extruder 0 hotend (default extruder).
@@ -553,6 +562,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // M501 - reads parameters from EEPROM (if you need reset them after you changed them temporarily).
 // M502 - reverts to the default "factory settings".  You still need to store them in EEPROM afterwards if you want to.
 //define this to enable EEPROM support
+//Dwi enable epprom settings
 //#define EEPROM_SETTINGS
 //to disable EEPROM Serial responses and decrease program space by ~1700 byte: comment this out:
 // please keep turned on if you can.
